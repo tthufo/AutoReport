@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>north</key>
+	<dict>
+		<key>prefix</key>
+		<string>Morning! Let&apos;s start your wonderful day with your favourite music!</string>
+		<key>title</key>
+		<string>Bắc</string>
+		<key>region</key>
+		<string>north</string>
+		<key>start</key>
+		<string>8:30:00</string>
+		<key>end</key>
+		<string>18:15:00</string>
+		<key>live</key>
+		<string>18:45:00</string>
+	</dict>
+	<key>central</key>
+	<dict>
+		<key>prefix</key>
+		<string>Hi there! Do you need some relaxing music? Play now!</string>
+		<key>title</key>
+		<string>Trung</string>
+		<key>region</key>
+		<string>central</string>
+		<key>start</key>
+		<string>13:45:00</string>
+		<key>end</key>
+		<string>17:15:00</string>
+		<key>live</key>
+		<string>17:45:00</string>
+	</dict>
+	<key>south</key>
+	<dict>
+		<key>prefix</key>
+		<string>Hope you have a good night sleep! Enjoy your music! Good night!</string>
+		<key>title</key>
+		<string>Nam</string>
+		<key>region</key>
+		<string>south</string>
+		<key>start</key>
+		<string>20:45:00</string>
+		<key>end</key>
+		<string>16:15:00</string>
+		<key>live</key>
+		<string>16:45:00</string>
+	</dict>
+	<key>endgame</key>
+	<dict>
+		<key>prefix</key>
+		<string>Hope you have a good night sleep! Enjoy your music! Good night!</string>
+		<key>title</key>
+		<string>Report</string>
+		<key>region</key>
+		<string>endgame</string>
+		<key>start</key>
+		<string>02:18:00</string>
+		<key>end</key>
+		<string>02:20:00</string>
+	</dict>
+</dict>
+</plist>
