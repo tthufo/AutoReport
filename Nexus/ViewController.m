@@ -44,25 +44,31 @@
 }
 
 - (void)localNofification {
-    NSDate *date = [NSDate date];
-       NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitYear|NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitHour) fromDate:date];
-   components.timeZone = [NSTimeZone localTimeZone];
-   [components setDay: components.day + 0];
-   [components setHour: 15];
-   [components setMinute: 25];
-   NSDate *dateToFire = [calendar dateFromComponents:components];
-
-   NSUserNotification *localNotif = [NSUserNotification new];
-   localNotif.deliveryRepeatInterval.day = 1;
-   localNotif.informativeText = @"Nexus daily report!";
-   localNotif.deliveryTimeZone = [NSTimeZone localTimeZone];
-   localNotif.deliveryDate = dateToFire;
-   NSDateComponents *repeatTime = [NSDateComponents new];
-    repeatTime.day = 1;
-    localNotif.deliveryRepeatInterval = repeatTime;
-   NSUserNotificationCenter *notiCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
-   [notiCenter scheduleNotification:localNotif];
+    
+//    [[NSApplication sharedApplication] requestUserAttention: .critic];
+     
+//     NSCriticalRequest = 0,
+//     NSInformationalRequest = 10
+    
+//    NSDate *date = [NSDate date];
+//       NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitYear|NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitHour) fromDate:date];
+//   components.timeZone = [NSTimeZone localTimeZone];
+//   [components setDay: components.day + 0];
+//   [components setHour: 15];
+//   [components setMinute: 25];
+//   NSDate *dateToFire = [calendar dateFromComponents:components];
+//
+//   NSUserNotification *localNotif = [NSUserNotification new];
+//   localNotif.deliveryRepeatInterval.day = 1;
+//   localNotif.informativeText = @"Nexus daily report!";
+//   localNotif.deliveryTimeZone = [NSTimeZone localTimeZone];
+//   localNotif.deliveryDate = dateToFire;
+//   NSDateComponents *repeatTime = [NSDateComponents new];
+//    repeatTime.day = 1;
+//    localNotif.deliveryRepeatInterval = repeatTime;
+//   NSUserNotificationCenter *notiCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
+//   [notiCenter scheduleNotification:localNotif];
 }
 
 - (void)onTick {
@@ -70,6 +76,7 @@
         [self checkReport];
     } else {
         status.stringValue = @"Watching out 4 u.";
+        [NSApp cancelUserAttentionRequest: NSCriticalRequest];
     }
 }
 
@@ -88,7 +95,7 @@
         [pulsing setImage: [NSImage imageNamed:@"source-2.gif"]];
         
         if (timer == nil) {
-            timer = [NSTimer scheduledTimerWithTimeInterval: 30.0
+            timer = [NSTimer scheduledTimerWithTimeInterval: 120.0
               target: self
               selector:@selector(onTick)
               userInfo: nil repeats:YES];
@@ -264,6 +271,7 @@
     if ([url containsString:@"daily_reports"]) {
         NSLog(@"connection received data %@", responseJson);
         status.stringValue = @"Reported, you're safe 4 today";
+        [NSApp requestUserAttention: NSCriticalRequest];
     }
 }
 
