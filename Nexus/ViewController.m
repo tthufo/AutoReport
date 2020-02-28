@@ -201,20 +201,44 @@
 
 - (void)report:(NSArray*)projects
 {
-    NSDictionary * tempProject = [projects firstObject];
     
-    NSDateFormatter * dateFor = [NSDateFormatter new];
     
-    dateFor.dateFormat = @"yyyy-MM-dd";
+//    NSDictionary * tempProject = [projects firstObject];
+//
+//    NSDateFormatter * dateFor = [NSDateFormatter new];
+//
+//    dateFor.dateFormat = @"yyyy-MM-dd";
+//
+//    NSString * date = [dateFor stringFromDate: [NSDate date]];
+//
+//    NSDictionary * report = @{@"report_id": @(0), @"task_id": @"", @"summary": @"Fix bugs if any",@"time_worked": @(2),@"current_progress": @(100),@"previous_progress": @(0), @"type": @(1)};
+//
+//    NSDictionary * project = @{@"date_report": date, @"name": tempProject[@"name"], @"project_id": tempProject[@"id"], @"tasks": @[report]};
+//
+//    NSDictionary * post = @{@"reports": @[project]};
+//
+//    NSLog(@"%@", );
     
-    NSString * date = [dateFor stringFromDate: [NSDate date]];
+    NSMutableArray * array = [NSMutableArray new];
     
-    NSDictionary * report = @{@"report_id": @(0), @"task_id": @"", @"summary": @"Temporary report",@"time_worked": @(1),@"current_progress": @(100),@"previous_progress": @(0), @"type": @(1)};
+    for (NSDictionary * project in projects) {
+        NSDictionary * tempProject = project;
     
-    NSDictionary * project = @{@"date_report": date, @"name": tempProject[@"name"], @"project_id": tempProject[@"id"], @"tasks": @[report]};
+        NSDateFormatter * dateFor = [NSDateFormatter new];
     
-    NSDictionary * post = @{@"reports": @[project]};
+        dateFor.dateFormat = @"yyyy-MM-dd";
+    
+        NSString * date = [dateFor stringFromDate: [NSDate date]];
+    
+        NSDictionary * report = @{@"report_id": @(0), @"task_id": @"", @"summary": @"Fix bugs if any",@"time_worked": @(2),@"current_progress": @(100),@"previous_progress": @(0), @"type": @(1)};
+    
+        NSDictionary * pro = @{@"date_report": date, @"name": tempProject[@"name"], @"project_id": tempProject[@"id"], @"tasks": @[report]};
         
+        [array addObject:pro];
+    }
+    
+    NSDictionary * post = @{@"reports": array};
+            
      NSError *error;
 
      NSData *postData = [NSJSONSerialization dataWithJSONObject: post
